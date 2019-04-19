@@ -2,9 +2,9 @@ package com.itheima.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -34,16 +34,10 @@ public class loginController {
 				// 通过SqlSessionFactory创建SqlSession
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 				// SqlSession执行映射文件中定义的SQL，并返回映射结果
-		Student student = sqlSession.selectOne("com.itheima.mapper"
-						  + ".StudentMapper.findpasswordBystuname",stu.getStuname());
-		System.out.println(student.getStuname());
-		System.out.println(student.getPassword());
-		System.out.println(stu.getStuname());
-		System.out.println(stu.getPassword());
-		String stupassword=stu.getPassword();
-		String studentpassword=stu.getPassword();
-		if(studentpassword!=null && stupassword==studentpassword) {
-			model.addAttribute(student);
+		List<Student> students = sqlSession.selectList("com.itheima.mapper"
+						  + ".StudentMapper.findUser");
+		if(students.contains(stu)) {
+			//model.addAttribute();
 			return "edit_stuscore";
 		}
 		else {

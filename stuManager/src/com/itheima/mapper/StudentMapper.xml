@@ -3,12 +3,14 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace表示命名空间 -->
 <mapper namespace="com.itheima.mapper.StudentMapper">
-    <select id="findpasswordBystuname" parameterType="String"
+    <select id="findUser"
+        parameterType="com.itheima.po.Student"
 		resultType="com.itheima.po.Student">
-		select * from student where  stuname= #{stuname}
+		select * from student
 	</select>
 	<select id="findinformationById" parameterType="Integer"
 		resultType="com.itheima.po.Student">
 		select * from student where id = #{id}
-	</select>
+	</select>	
+	
 </mapper>

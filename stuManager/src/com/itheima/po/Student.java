@@ -33,5 +33,20 @@ public class Student {
 	public String toString() {
 		return "Student [id=" + id + ", stuname=" + stuname + ", password=" + password + ", score=" + score + "]";
 	}
+	 @Override
+	 /***
+	  * ÷ÿ–¥equals∑Ω∑®
+	  */
+	 public boolean equals(Object o) {
+		  if (null == o)
+		      return false;
+		  Student student = (Student) o;
+		    if (this.stuname.equals(student.getStuname())) {
+		       if(this.password.equals(student.getPassword())) {
+		          return true;
+		     }
+		        }
+		        return false;
+		    }
 
 }
