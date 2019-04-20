@@ -37,7 +37,10 @@ public class loginController {
 		List<Student> students = sqlSession.selectList("com.itheima.mapper"
 						  + ".StudentMapper.findUser");
 		if(students.contains(stu)) {
-			//model.addAttribute();
+			Student student = sqlSession.selectOne("com.itheima.mapper"
+					  + ".StudentMapper.findinformationByUsername",stu.getStuname());
+			System.out.println(student);
+			model.addAttribute("stu",student);
 			return "edit_stuscore";
 		}
 		else {

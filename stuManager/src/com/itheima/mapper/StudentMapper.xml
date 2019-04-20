@@ -8,6 +8,10 @@
 		resultType="com.itheima.po.Student">
 		select * from student
 	</select>
+	<select id="findinformationByUsername" parameterType="String"
+		resultType="com.itheima.po.Student">
+		select * from student where stuname = #{stuname}
+	</select>	
 	<select id="findinformationById" parameterType="Integer"
 		resultType="com.itheima.po.Student">
 		select * from student where id = #{id}
