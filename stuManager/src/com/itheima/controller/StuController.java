@@ -37,7 +37,7 @@ public class StuController {
 				// SqlSession执行映射文件中定义的SQL，并返回映射结果
 		Student student = sqlSession.selectOne("com.itheima.mapper"
 						  + ".StudentMapper.findinformationById",id);
-		model.addAttribute(student);
+		model.addAttribute("stu",student);
 		sqlSession.close();
 		return "editpage";
 	}
