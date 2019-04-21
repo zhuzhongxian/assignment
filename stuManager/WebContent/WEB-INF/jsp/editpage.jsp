@@ -10,25 +10,19 @@
 <h1 align="center">修改界面</h1>
 <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/edit" method="post" >
   
-  <fieldset disabled>
-    <div class="form-group">
-      <label for="disabledTextInput" class="col-sm-2 control-label">ID</label>
+   <div class="form-group">
+   	<label for="disabledSelect" class="col-sm-2 control-label">ID</label>
       <div class="col-sm-10">
-        <input type="text" id="disabledTextInput" class="form-control" placeholder=${stu.id}>
+      <input type="text" class="form-control" name="id" value=${stu.id}  readonly  unselectable="on" >
       </div>
-    </div>
-    <div class="form-group">
       <label for="disabledSelect" class="col-sm-2 control-label">用户名</label>
       <div class="col-sm-10">
-      <input type="text" id="disabledTextInput" class="form-control" placeholder=${stu.stuname}>
+      <input type="text" class="form-control" name="stuname" value=${stu.stuname}   readonly  unselectable="on" >
       </div>
-    </div>
-    <input type="hidden" value=${stu.score} name="score"></input>
-  </fieldset>
-   <div class="form-group">
+      <input type="hidden" class="form-control" name="score" value=${stu.score} >
       <label for="disabledSelect" class="col-sm-2 control-label">修改成绩</label>
       <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword" placeholder="修改的成绩">
+      <input type="text" class="form-control" id="inputPassword" placeholder="修改成绩" name="score1">
       </div>
     </div>
   <input type="submit" value="提交"/>
