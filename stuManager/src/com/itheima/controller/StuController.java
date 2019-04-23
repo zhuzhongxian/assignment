@@ -69,12 +69,13 @@ public class StuController {
 			stu.setScore(score1);
 			student = sqlSession.update("com.itheima.mapper"
 							  + ".StudentMapper.updateScore",stu);
-			sqlSession.close();
-
 		}
-		System.out.println(student);
-		
-		if(true){
+		if(student==1){
+			Student data= sqlSession.selectOne("com.itheima.mapper"
+					  + ".StudentMapper.findinformationById",id);
+			System.out.println(data);
+			model.addAttribute("stu",data);
+			sqlSession.close();
 			return"edit_stuscore";
 		}else{
 			return"error";
