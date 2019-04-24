@@ -1,5 +1,9 @@
 package com.itheima.po;
-
+/***
+ * Bean Student
+ *  * @author Zeno
+ *
+ */
 public class Student {
 	private Integer id;
 	private String stuname;

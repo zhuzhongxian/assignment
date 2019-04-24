@@ -14,11 +14,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itheima.po.Student;
-
+/***
+ * 
+ * @author Zeno
+ *
+ */
 @Controller
 public class StuController {
 	/***
-	 * 接收修改id
+	 * Get id
 	 * @param id
 	 * @param model
 	 * @return
@@ -42,7 +46,7 @@ public class StuController {
 		return "editpage";
 	}
 	/***
-	 * 提交修改
+	 * Commit Edit
 	 * @param request
 	 * @param model
 	 * @return

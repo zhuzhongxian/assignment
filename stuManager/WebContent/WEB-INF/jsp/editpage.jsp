@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1 align="center">修改界面</h1>
+<h1 align="center">Edit</h1>
 <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/edit" method="post" >
   
    <div class="form-group">
@@ -15,17 +15,17 @@
       <div class="col-sm-10">
       <input type="text" class="form-control" name="id" value=${stu.id}  readonly  unselectable="on" >
       </div>
-      <label for="disabledSelect" class="col-sm-2 control-label">用户名</label>
+      <label for="disabledSelect" class="col-sm-2 control-label">Username</label>
       <div class="col-sm-10">
       <input type="text" class="form-control" name="stuname" value=${stu.stuname}   readonly  unselectable="on" >
       </div>
       <input type="hidden" class="form-control" name="score" value=${stu.score} >
-      <label for="disabledSelect" class="col-sm-2 control-label">修改成绩</label>
+      <label for="disabledSelect" class="col-sm-2 control-label">Score</label>
       <div class="col-sm-10">
-      <input type="text" class="form-control" id="inputPassword" placeholder="修改成绩" name="score1">
+      <input type="text" class="form-control" id="inputPassword" placeholder="Score" name="score1">
       </div>
     </div>
-  <input type="submit" value="提交"/>
+  <input type="submit" value="commit"/>
 
   
 </form>
