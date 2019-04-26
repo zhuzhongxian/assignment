@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itheima.po.Student;
+import com.itheima.utils.MybatisUtils;
 /***
  * 
  * @author Zeno
@@ -30,19 +31,11 @@ public class StuController {
 	 */
 	@RequestMapping(value="/editpage")
 	public String editpage(Integer id,Model model) throws IOException {
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = 
-		                    Resources.getResourceAsStream(resource);
-				// 根据配置文件构建SqlSessionFactory
-		SqlSessionFactory sqlSessionFactory = 
-		                     new SqlSessionFactoryBuilder().build(inputStream);
-				// 通过SqlSessionFactory创建SqlSession
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-				// SqlSession执行映射文件中定义的SQL，并返回映射结果
-		Student student = sqlSession.selectOne("com.itheima.mapper"
+		SqlSession sqlsession =MybatisUtils.getSession();
+		Student student = sqlsession.selectOne("com.itheima.mapper"
 						  + ".StudentMapper.findinformationById",id);
 		model.addAttribute("stu",student);
-		sqlSession.close();
+		sqlsession.close();
 		return "editpage";
 	}
 	/***
@@ -58,28 +51,20 @@ public class StuController {
 		Integer id=Integer.parseInt(request.getParameter("id"));
 		Double score=Double.parseDouble(request.getParameter("score"));
 		Double score1=Double.parseDouble(request.getParameter("score1"));
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = 
-		                    Resources.getResourceAsStream(resource);
-				// 根据配置文件构建SqlSessionFactory
-		SqlSessionFactory sqlSessionFactory = 
-		                     new SqlSessionFactoryBuilder().build(inputStream);
-				// 通过SqlSessionFactory创建SqlSession
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-				// SqlSession执行映射文件中定义的SQL，并返回映射结果
+		SqlSession sqlsession =MybatisUtils.getSession();
 		if(score!=score1 && score1!=null) {
 			Student stu=new Student();
 			stu.setId(id);
 			stu.setScore(score1);
-			student = sqlSession.update("com.itheima.mapper"
+			student = sqlsession.update("com.itheima.mapper"
 							  + ".StudentMapper.updateScore",stu);
 		}
 		if(student==1){
-			Student data= sqlSession.selectOne("com.itheima.mapper"
+			Student data= sqlsession.selectOne("com.itheima.mapper"
 					  + ".StudentMapper.findinformationById",id);
 			System.out.println(data);
 			model.addAttribute("stu",data);
-			sqlSession.close();
+			sqlsession.close();
 			return"edit_stuscore";
 		}else{
 			return"error";

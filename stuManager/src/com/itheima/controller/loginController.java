@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.itheima.po.Student;
+import com.itheima.utils.MybatisUtils;
 /***
  * 
  * @author Zeno
@@ -35,24 +36,15 @@ public class loginController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value="/toEditStuScore")
-	private String toEditStuScore(Student stu,Model model,HttpSession session) throws IOException{
-		String resource = "mybatis-config.xml";
-		InputStream inputStream = 
-		                    Resources.getResourceAsStream(resource);
-				// 根据配置文件构建SqlSessionFactory
-		SqlSessionFactory sqlSessionFactory = 
-		                     new SqlSessionFactoryBuilder().build(inputStream);
-				// 通过SqlSessionFactory创建SqlSession
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-				// SqlSession执行映射文件中定义的SQL，并返回映射结果
-		List<Student> students = sqlSession.selectList("com.itheima.mapper"
+	private String toEditStuScore(Student stu,Model model,HttpSession session) throws IOException{	
+		SqlSession sqlsession =MybatisUtils.getSession();
+		List<Student> students = sqlsession.selectList("com.itheima.mapper"
 						  + ".StudentMapper.findUser");
 		if(students.contains(stu)) {
-			Student student = sqlSession.selectOne("com.itheima.mapper"
+			Student student = sqlsession.selectOne("com.itheima.mapper"
 					  + ".StudentMapper.findinformationByUsername",stu.getStuname());
 			model.addAttribute("stu",student);
 			session.setAttribute("STUDENT_SESSION",stu);
-			System.out.println(student);
 			return "edit_stuscore";
 		}
 		else {
