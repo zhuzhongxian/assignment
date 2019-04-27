@@ -18,6 +18,6 @@
     </environments>
     <!--配置Mapper -->
     <mappers>
-		<mapper resource="com/itheima/mapper/StudentMapper.xml" />
+		<mapper resource="mapper/StudentMapper.xml" />
     </mappers>
 </configuration>

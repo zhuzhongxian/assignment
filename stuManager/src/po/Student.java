@@ -1,4 +1,4 @@
-package com.itheima.po;
+package po;
 /***
  * Bean Student
  *  * @author Zeno

@@ -1,4 +1,4 @@
-package com.itheima.controller;
+package controller;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,8 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.itheima.po.Student;
-import com.itheima.utils.MybatisUtils;
+import po.Student;
+import utils.MybatisUtils;
 /***
  * 
  * @author Zeno
@@ -32,7 +32,7 @@ public class StuController {
 	@RequestMapping(value="/editpage")
 	public String editpage(Integer id,Model model) throws IOException {
 		SqlSession sqlsession =MybatisUtils.getSession();
-		Student student = sqlsession.selectOne("com.itheima.mapper"
+		Student student = sqlsession.selectOne("mapper"
 						  + ".StudentMapper.findinformationById",id);
 		model.addAttribute("stu",student);
 		sqlsession.close();
@@ -56,11 +56,11 @@ public class StuController {
 			Student stu=new Student();
 			stu.setId(id);
 			stu.setScore(score1);
-			student = sqlsession.update("com.itheima.mapper"
+			student = sqlsession.update("mapper"
 							  + ".StudentMapper.updateScore",stu);
 		}
 		if(student==1){
-			Student data= sqlsession.selectOne("com.itheima.mapper"
+			Student data= sqlsession.selectOne("mapper"
 					  + ".StudentMapper.findinformationById",id);
 			System.out.println(data);
 			model.addAttribute("stu",data);

@@ -5,6 +5,20 @@
 <head>
 <meta charset="GB18030">
 <title>Insert title here</title>
+<style type="text/css">
+.form-horizontal{
+position: absolute;
+width: 300px;
+height: 200px;
+
+border: 1px solid red;
+text-align: center;
+top: 50%;
+left: 50%;
+margin-top: -200px;
+margin-left: -150px;
+}
+</style>
 </head>
 <body>
 <h1 align="center">Edit</h1>

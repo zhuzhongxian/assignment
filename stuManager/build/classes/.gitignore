@@ -1,1 +1,7 @@
-/com/
+/controller/
+/log4j.properties
+/mapper/
+/mybatis-config.xml
+/po/
+/springmvc-config.xml
+/utils/
