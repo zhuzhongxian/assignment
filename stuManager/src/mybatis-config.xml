@@ -2,20 +2,33 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <environments default="mysql">
-        <environment id="mysql">
-            <!-- 使用JDBC的事务管理 -->
-            <transactionManager type="JDBC" />
-            <!--数据库连接池 -->
-            <dataSource type="POOLED">
-			  <property name="driver" value="com.mysql.jdbc.Driver" />
-			  <property name="url" 
-                            value="jdbc:mysql://localhost:3306/ee" />
-			  <property name="username" value="root" />
-			  <property name="password" value="" />
-            </dataSource>
-        </environment>
-    </environments>
+<properties resource="db.properties" />
+    <settings>
+     <!-- 打开延迟加载的开关 -->  
+    <setting name="lazyLoadingEnabled" value="true" />  
+    <!-- 将积极加载改为消息加载，即按需加载 -->  
+    <setting name="aggressiveLazyLoading" value="false"/>  
+	</settings>
+	
+	<!--使用扫描包的形式定义别名 -->
+	<typeAliases>
+		<package name="po" />
+	</typeAliases>
+	<!--配置环境 ，默认的环境id为mysql -->
+	<environments default="mysql">
+		<!-- 配置id为mysql的数据库环境 -->
+		<environment id="mysql">
+			<!-- 使用JDBC的事务管理 -->
+			<transactionManager type="JDBC" />
+			<!--数据库连接池 -->
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+			</dataSource>
+		</environment>
+	</environments>
     <!--配置Mapper -->
     <mappers>
 		<mapper resource="mapper/StudentMapper.xml" />
