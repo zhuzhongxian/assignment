@@ -23,7 +23,6 @@ margin-left: -150px;
 <body>
 <h1 align="center">Edit</h1>
 <form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/edit" method="post" >
-  
    <div class="form-group">
    	<label for="disabledSelect" class="col-sm-2 control-label">ID</label>
       <div class="col-sm-10">
@@ -39,9 +38,7 @@ margin-left: -150px;
       <input type="text" class="form-control" id="inputPassword" placeholder="Score" name="score1">
       </div>
     </div>
-  <input type="submit" value="commit"/>
-
-  
+  <input type="submit" value="commit"/>  
 </form>
 </body>
 </html>
