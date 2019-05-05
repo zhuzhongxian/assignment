@@ -62,7 +62,6 @@ public class StuController {
 		if(student==1){
 			Student data= sqlsession.selectOne("mapper"
 					  + ".StudentMapper.findinformationById",id);
-			System.out.println(data);
 			model.addAttribute("stu",data);
 			sqlsession.close();
 			return"edit_stuscore";

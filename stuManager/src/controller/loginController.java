@@ -33,7 +33,7 @@ public class loginController {
 	 * @throws IOException
 	 */
 	@RequestMapping(value="/toEditStuScore")
-	private String toEditStuScore(Student stu,Model model,HttpSession session) throws IOException{	
+	private String toEditStuScore(Student stu,Model model,HttpSession session) throws IOException{
 		SqlSession sqlsession =MybatisUtils.getSession();
 		List<Student> students = sqlsession.selectList("mapper"
 						  + ".StudentMapper.findUser");
